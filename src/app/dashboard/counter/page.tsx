@@ -1,12 +1,20 @@
-// import { redirect } from 'next/navigation'
+import { CartCounter } from '@/app/shopping-cart'
 
+
+
+export const metadata = {
+  title:'Shopping Cart',
+  description: 'A page with a counter',
+}
 
 export default function CounterPage() {
-//   redirect('/dashboard/counter')
+  
+ 
 
   return (
-    <div>
-      <h1>Counter Page</h1>
+    <div className='flex flex-col justify-center items-center w-full h-full'>
+      <span>Productos del carrito</span>
+      <CartCounter />
     </div>
   )
 }
