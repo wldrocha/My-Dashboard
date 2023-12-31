@@ -15,12 +15,16 @@ export const PokemonCard = ({ id, name }: SimplePokemon) => {
             width={100}
             height={100}
             alt={name}
+            priority={false}
           />
           <p className='pt-2 text-lg font-semibold text-gray-50'>{name}</p>
           <p className='text-sm text-gray-100'>John@Doe.com</p>
-          <div className='mt-5'>
-            <a className='border rounded-full py-2 px-4 text-xs font-semibold text-gray-100 capitalize'>More info</a>
-          </div>
+          <Link
+            href={`dashboard/pokemon/${id}`}
+            className='mt-5 border rounded-full py-2 px-4 text-xs font-semibold text-gray-100 capitalize'
+          >
+            More info
+          </Link>
         </div>
         <div className='border-b'>
           <Link href='/dashboard/main' className='flex items-center px-4 py-2 hover:bg-gray-100 flex'>
