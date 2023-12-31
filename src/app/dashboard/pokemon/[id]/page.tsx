@@ -1,4 +1,5 @@
 import { Pokemon } from '@/pokemons'
+import { Metadata } from 'next'
 
 interface Props {
   params: {
@@ -6,15 +7,21 @@ interface Props {
   }
 }
 
-
-export const metadata = {
- title: 'SEO Title',
- description: 'SEO Title',
-};
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const pokemon = await getPokemon(params.id)
+  
+  return {
+    title: `#${pokemon.id} ${pokemon.name}`,
+    description: `Information about ${pokemon.name}`
+  }
+}
 
 const getPokemon = async (id: string): Promise<Pokemon> => {
   const data = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
-    cache: 'force-cache'
+    // cache: 'force-cache'
+    next:{
+      revalidate: 60 * 60 * 24 * 30
+    }
   }).then((res) => res.json())
   return data
 }
