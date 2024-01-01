@@ -1,4 +1,4 @@
-import { Pokemon, PokemonDetailsCard } from '@/pokemons'
+import { Pokemon, PokemonDetailsCard, PokemonResponse } from '@/pokemons'
 
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -7,6 +7,17 @@ interface Props {
   params: {
     name: string
   }
+}
+
+export async function generateStaticParams({ params }: Props) {
+  const limit = 151
+  const pokemonsResult: PokemonResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}`).then((res) =>
+    res.json()
+  )
+
+  return pokemonsResult.results.map((pokemon) => ({
+    name: pokemon.name
+  }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -41,5 +52,5 @@ const getPokemon = async (pokemonName: string): Promise<Pokemon> => {
 
 export default async function PokemonDetailsPage({ params }: Props) {
   const pokemon = await getPokemon(params.name)
-  return <PokemonDetailsCard{...pokemon} />
+  return <PokemonDetailsCard {...pokemon} />
 }
