@@ -11,6 +11,11 @@ const getPokemons = async (limit = 20, offset = 0): Promise<SimplePokemon[]> => 
   }))
   return pokemons
 }
+export const metadata: Metadata = {
+  title: 'Pokemons',
+  description: 'Pokemons list',
+}
+
 
 export default async function PokemonsPage() {
   const pokemonsList = await getPokemons(151)
