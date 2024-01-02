@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 
-import { MdOutlineDashboard, MdOutlineCalculate, MdCatchingPokemon } from 'react-icons/md'
+import { MdOutlineDashboard, MdOutlineCalculate, MdCatchingPokemon, MdFavorite } from 'react-icons/md'
 import { SidebarMenuItem } from '.'
 import path from 'path'
 
@@ -23,6 +23,12 @@ const menuitems = [
     icon: <MdCatchingPokemon size={20} />,
     title: 'Pokedex',
     subTitle: 'Static Generation'
+  },
+  {
+    path: '/dashboard/favorites',
+    icon: <MdFavorite size={20} />,
+    title: 'Favorites',
+    subTitle: 'Global State'
   }
 ]
 
