@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 
 import { MdOutlineDashboard, MdOutlineCalculate, MdCatchingPokemon, MdFavorite } from 'react-icons/md'
-import { SidebarMenuItem } from '.'
+import { SidebarMenuItem } from './'
 import path from 'path'
 
 const menuitems = [
