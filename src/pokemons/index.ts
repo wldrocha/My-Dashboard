@@ -1,5 +1,6 @@
 export * from './components/PokemonCard'
 export * from './components/PokemonDetailsCard'
+export * from './components/PokemonFavorites'
 export * from './components/PokemonGrid'
 export * from './interfaces/pokemon'
 export * from './interfaces/pokemons-interfaces'
